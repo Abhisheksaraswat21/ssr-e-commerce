@@ -1,0 +1,110 @@
+<!-- server se aane waale vaiable ko html me embedd krene me help krta hai -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <title>Realtime Grocery App</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/css/app.css" />
+    <!-- //jo file compile hoke aarhi ha usko hum prject ke andar de rehe  hai -->
+    <!-- ye css file hai per server hume response deta hai text html me...to  server.js me humne assets diiye hhai
+ki ye css file hai to hume response css me chahiye -->
+  </head>
+  <body>
+    <section class="hero py-16">
+      <div class="container mx-auto flex items-center justify-between">
+        <div class="w-1/2">
+          <h6 class="text-lg"><em>Are you Hungry?</em></h6>
+          <h1 class="text-6xl font-bold">Don't Wait</h1>
+
+          <button
+            class="px-6 py-2 rounded-full text-white font-bold mt-4 btn-primary"
+          >
+            Order Now
+            
+          </button>
+        </div>
+        <div class="w-1/2">
+          <img src="/img/MainImage1.jpg" alt="" />
+        </div>
+      </div>
+    </section>
+   
+    <section class="menu container mx-auto py-8">
+
+
+      <div class="wrapper">
+        <marquee behavior="alternate"><span class="marquee"> <h1 class="text-xl font-bold mb-8" >All Groceries on a click!!</h1></span></marquee>
+        </div>
+  <!-- thos will move the text from left to right...styling is defined in the css -->
+
+     
+
+      <div class="grid grid-cols-4 col-gap-12 row-gap-16">
+        <!-- //ab humne groceries jo homecontroller se aari thi usko yaha use kra
+//isme humne foreach function lgaaya jisme har elemnt jab bhi aayega wo grocery me paas hoga
+//fir uspe humne same code lga dia
+//niche wali line is ejs function ki hep se render kia hai -->
+
+        <% groceries.forEach((grocery)=> { %>
+
+        <div class="w-64">
+          <img
+            class="h-40 mb-4 mx-auto pt-6 mt-4 rounded-xl zoom "
+            src="/img/<%= grocery.image %> "
+            alt=""
+          />
+
+          <div class="text-center">
+            <h2 class="mb-4 text-lg"><%= grocery.name %></h2>
+
+            <!-- <span class="size py-1 px-4 rounded-full uppercase text-xs"
+              ><%= grocery.size %></span
+            > -->
+
+            <div class="flex items-center justify-around mt-6">
+              <span class="font-bold text-lg">$ <%= grocery.price %></span>
+              <button
+                data-grocery="<%= JSON.stringify(grocery) %>"
+                class="
+                  add-to-cart
+                  py-1
+                  px-6
+                  rounded-full
+                  flex
+                  items-center
+                  font-bold
+                "
+              >
+                <!-- we cannot paas an object so we converted each of the grocery in a json string and used it in the app.js -->
+                <span>+</span>
+                <span class="ml-4">Add</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <% })%>
+      </div>
+    </section>
+
+    <script src="/js/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,131 @@
+@import "./variables";
+// we linked the variable file here agr hum _ ni lga rhe tb bhi chalega
+
+@import "~noty/src/noty.scss";
+@import "~noty/src/themes/mint.scss";
+
+body {
+  font-family: "Lato", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  //ye smooothing ke lie=ye hai
+
+  color: $dark;
+}
+
+nav li:last-child a {
+  background: $primary;
+
+  &:hover {
+    background: $primary-hover;
+  }
+}
+//nav list ke last element mtlb ki cart imgae ki baat krrrha hai
+
+nav li a {
+  transition: $smooth;
+  &:hover {
+    color: $primary;
+  }
+}
+
+section.hero {
+  background: $secondary;
+}
+
+.size {
+  background: $secondary;
+}
+
+.add-to-cart {
+  border: 2px solid $primary;
+  color: $primary;
+
+  transition: $smooth;
+
+  &:hover {
+    background: $primary;
+    border-color: $pure;
+    color: $pure;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.btn-primary {
+  transition: $smooth;
+  &:hover {
+    background: $primary-hover;
+  }
+
+  background: $primary;
+}
+
+section.cart {
+  background: $secondary;
+}
+
+.amount {
+  color: $primary;
+}
+
+section.login {
+  background: $secondary;
+  min-height: calc(100vh - 86px);
+
+  a {
+    color: $primary;
+    a:hover {
+      color: $primary-hover;
+    }
+  }
+}
+
+//this is not working..pta ni kyu
+.noty_thene_mint {
+  border-radius: 50px !important;
+  padding-left: 80px !important;
+}
+
+
+//this is for the moving text " all groceries on a click "
+
+.wrapper{
+  max-width: 100%;
+//  background: green;
+  height: 40px;
+  text-align: right;
+}
+
+.marquee {
+   //background: red;
+   color:green;
+   font-size: x-large;
+  white-space: nowrap;
+  -webkit-animation: rightThenLeft 4s linear;
+}
+
+.zoom:hover {
+  //width: 100%;
+          transition: 0.5s all ease-in-out;
+          transform: scale(1.2);
+  // transform: scale(1.5);
+}
+
+
+
+.black_white {
+  color: white;
+  -webkit-text-stroke-color: black;
+}
+
+.white_black {
+  color: black;
+  -webkit-text-stroke-color: white;
+}
+
+a.link {
+color: $primary;
+
+}

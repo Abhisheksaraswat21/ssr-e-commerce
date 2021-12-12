@@ -1,0 +1,87 @@
+<!-- //iska naam layout hi hoga becasue layout.js ko hi dhoondega layout-ejs package
+jo humne install kia tha 
+
+jo baar baar repeat honge suko hum yaha likhenge
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <title>Realtime Grocery App</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/css/app.css" />
+    <!-- //jo file compile hoke aarhi ha usko hum prject ke andar de rehe  hai -->
+    <!-- ye css file hai per server hume response deta hai text html me...to  server.js me humne assets diiye hhai
+ki ye css file hai to hume response css me chahiye -->
+  </head>
+  <body>
+    <nav class="container mx-auto flex items- center justify-between py-4">
+      <div>
+        <a href="/"><img class= "h-20 mx-auto -mt-6" src="/img/groceryicon.png" alt="logo" /> </a>
+      </div>
+
+      <div>
+        <ul class="flex items- center py-4">
+          <li class="ml-6"><a href="/">Menu</a></li>
+         
+          <li class="ml-6"><a href="#">Offers</a></li>
+         
+<!-- agr user exist krega to fir logout ka option aayega wrna login aur register -->
+
+          <% if(user) { %>
+          <li class="ml-6">
+            <form id="logout" action="/logout" method="POST">
+            <a href="#" onclick="document.getElementById('logout').submit()">Logout</a>
+            <!-- post request ke lieye form dena pdta hai hume -->
+           <!-- //ab hume submi use krna hai aur psot request bheni hai ...to ese bhi krskte hai -->
+
+          </form>
+        </li>
+          <% } else { %>
+            <li class="ml-6"><a href="/register">Register</a></li>
+
+          <li class="ml-6"><a href="/login">Login</a></li>
+
+          <% } %>
+          <li class="ml-6">
+            <a
+              href="/cart"
+              class="inline-block px-4 p-2 rounded-full flex items-center"
+            >
+              <span id="cartCounter" class="text-white font-bold pr-2"
+                ><%= session.cart ? session.cart.totalQty : '' %></span
+              >
+              <!-- ternary operator use kia hai maine...agr session me cart hoga to quantity 
+              dikhaega wrna cart ke icon pe kuch ni aayega -->
+              <img src="/img/cart.png" alt=""
+            /></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <%- body %>
+    <!-- //hr cheez ka unique content yha aayega body ki jagah -->
+
+    <footer></footer>
+
+    <script src="/js/app.js"></script>
+  </body>
+</html>
